@@ -1,2 +1,2 @@
-# SculptLauncher-
+# SculptLauncher
 A MCPE launcher that will be able to launch native mods in the future...
