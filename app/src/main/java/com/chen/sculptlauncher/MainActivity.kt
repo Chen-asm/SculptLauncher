@@ -1,4 +1,4 @@
- package com.chen.sculptlauncher
+package com.chen.sculptlauncher
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
