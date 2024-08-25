@@ -27,6 +27,7 @@ project("sculptlauncher")
 include_directories("inc")
 add_library(${CMAKE_PROJECT_NAME} SHARED
         # List C/C++ source files with relative paths to this CMakeLists.txt.
+
         native-lib.cpp)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -L${CMAKE_SOURCE_DIR}/../jniLibs/${CMAKE_ANDROID_ARCH_ABI}")
 
@@ -40,6 +41,8 @@ target_link_libraries(
         fmodL
         ${log-lib}
 )
+
+
 
 # Specifies libraries CMake should link to your target library. You
 # can link libraries from various origins, such as libraries defined in this
