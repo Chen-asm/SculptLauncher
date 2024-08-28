@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">SculptLauncher</string>
+    <string name="app.description">欢迎你使用 SculptLauncher。你可以通过本软件实现用原生语言修改《我的世界》游戏内容的功能。在使用本应用的过程中，我们需要访问你的文件系统以使核心功能得以实现。</string>
+    <string name="wizard.func.read_license">阅读《用户服务协议》</string>
+    <string name="wizard.func.go_repo">查看源代码仓库</string>
+    <string name="app.description_2">本应用的设计受众是具有一定的文件系统增删改查（或计算机软件和文件）知识储备的用户，如因此原因导致无法正常使用本应用功能的，我们不提供任何支持。</string>
+    <string name="app.description_3">本应用基于GNU GPLv3.0协议开源，你对于本应用及其副本的所有行为均视为自愿做出的，并且必须符合协议的要求，否则请立即停止使用本应用及其副本。本应用不含任何担保。</string>
+    <string name="wizard.ok">同意</string>
+    <string name="wizard.cancel">不同意</string>
+    <string name="home.empty.title">尚未找到安装的版本</string>
+    <string name="home.empty.install_one">安装新游戏</string>
+    <string name="home.title">版本列表</string>
+    <string name="home.sider.version_title">版本相关</string>
+    <string name="home.sider.app_title">应用相关</string>
+    <string name="home.sider.app_settings">偏好设置</string>
+    <string name="home.sider.app_cabin">回收桶</string>
 </resources>

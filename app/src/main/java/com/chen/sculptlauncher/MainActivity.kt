@@ -1,22 +1,41 @@
 package com.chen.sculptlauncher
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
-import com.chen.sculptlauncher.databinding.ActivityMainBinding
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.ui.Modifier
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import cafe.adriel.voyager.navigator.CurrentScreen
+import cafe.adriel.voyager.navigator.Navigator
+import com.chen.sculptlauncher.ui.screen.home.HomeScreen
+import com.chen.sculptlauncher.ui.theme.SculptLauncherTheme
 
-class MainActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityMainBinding
+class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
-
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        // Example of a call to a native method
-        binding.sampleText.text = stringFromJNI()
+        host = this
+        setContent {
+            SculptLauncherTheme {
+                Navigator(screen = HomeScreen){
+                    Surface(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .systemBarsPadding(),
+                        color = MaterialTheme.colorScheme.background
+                    ) {
+                        CurrentScreen()
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -30,5 +49,6 @@ class MainActivity : AppCompatActivity() {
         init {
             System.loadLibrary("sculptlauncher")
         }
+        lateinit var host: MainActivity
     }
 }
