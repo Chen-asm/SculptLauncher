@@ -7,4 +7,11 @@
     <string name="app.description_3">本应用基于GNU GPLv3.0协议开源，你对于本应用及其副本的所有行为均视为自愿做出的，并且必须符合协议的要求，否则请立即停止使用本应用及其副本。本应用不含任何担保。</string>
     <string name="wizard.ok">同意</string>
     <string name="wizard.cancel">不同意</string>
+    <string name="home.empty.title">尚未找到安装的版本</string>
+    <string name="home.empty.install_one">安装新游戏</string>
+    <string name="home.title">版本列表</string>
+    <string name="home.sider.version_title">版本相关</string>
+    <string name="home.sider.app_title">应用相关</string>
+    <string name="home.sider.app_settings">偏好设置</string>
+    <string name="home.sider.app_cabin">回收桶</string>
 </resources>
