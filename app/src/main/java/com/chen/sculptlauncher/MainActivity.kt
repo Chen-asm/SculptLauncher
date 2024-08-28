@@ -8,9 +8,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import cafe.adriel.voyager.navigator.CurrentScreen
+import cafe.adriel.voyager.navigator.Navigator
+import com.chen.sculptlauncher.ui.screen.home.HomeScreen
 import com.chen.sculptlauncher.ui.theme.SculptLauncherTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,13 +21,18 @@ class MainActivity : ComponentActivity() {
         installSplashScreen()
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
+        host = this
         setContent {
             SculptLauncherTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize().systemBarsPadding(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Text(text = stringFromJNI())
+                Navigator(screen = HomeScreen){
+                    Surface(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .systemBarsPadding(),
+                        color = MaterialTheme.colorScheme.background
+                    ) {
+                        CurrentScreen()
+                    }
                 }
             }
         }
@@ -42,5 +49,6 @@ class MainActivity : ComponentActivity() {
         init {
             System.loadLibrary("sculptlauncher")
         }
+        lateinit var host: MainActivity
     }
 }

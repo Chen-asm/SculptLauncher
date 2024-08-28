@@ -79,4 +79,8 @@ dependencies {
     implementation(libs.voyager.screenModel)
     implementation(libs.voyager.transitions)
     implementation(libs.androidx.splash)
+    implementation(libs.androidx.permission)
+    implementation(libs.androidx.adaptive)
+    implementation(libs.hutool.file)
+    implementation(libs.androidx.data.store)
 }
