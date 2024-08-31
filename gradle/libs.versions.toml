@@ -1,5 +1,7 @@
 [versions]
 agp = "8.5.2"
+documentfile = "1.0.1"
+fastjson2 = "2.0.52.android8"
 kotlin = "2.0.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -19,6 +21,8 @@ dataStore = "1.1.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+fastjson2 = { module = "com.alibaba.fastjson2:fastjson2", version.ref = "fastjson2" }
+androidx-documentfile = { module = "androidx.documentfile:documentfile", version.ref = "documentfile" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

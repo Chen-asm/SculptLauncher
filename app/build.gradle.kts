@@ -35,11 +35,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "1.8"
     }
     externalNativeBuild {
         cmake {
@@ -83,4 +83,7 @@ dependencies {
     implementation(libs.androidx.adaptive)
     implementation(libs.hutool.file)
     implementation(libs.androidx.data.store)
+    implementation(libs.androidx.documentfile)
+    implementation(libs.fastjson2)
+    implementation(files("src/libs/dex2jar-1.0.1.jar"))
 }

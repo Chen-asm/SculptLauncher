@@ -27,7 +27,10 @@ project("sculptlauncher")
 add_library(${CMAKE_PROJECT_NAME} SHARED
         # List C/C++ source files with relative paths to this CMakeLists.txt.
 
-        native-lib.cpp)
+        native-lib.cpp
+        bridge/home/home_bridge.cpp
+        bridge/home/home_bridge.h
+)
 
 # include_directories("inc")
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -L${CMAKE_SOURCE_DIR}/../jniLibs/${CMAKE_ANDROID_ARCH_ABI}")
