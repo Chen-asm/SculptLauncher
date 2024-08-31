@@ -15,6 +15,7 @@ std::string archInfo(const char* path) {
     }
 
     auto arch = get_architecture(header.e_machine);
+    so_file.close();
     return arch;
 }
 

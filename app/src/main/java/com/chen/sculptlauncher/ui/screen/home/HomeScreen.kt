@@ -48,6 +48,8 @@ import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import cn.hutool.core.io.FileUtil
 import com.chen.sculptlauncher.R
 import com.chen.sculptlauncher.core.bridge.HomeCppBridge
@@ -55,6 +57,7 @@ import com.chen.sculptlauncher.core.data.VersionEntry
 import com.chen.sculptlauncher.core.datastore.IS_FIRST_OPEN
 import com.chen.sculptlauncher.core.datastore.getStoredValue
 import com.chen.sculptlauncher.core.datastore.setStoreValue
+import com.chen.sculptlauncher.ui.screen.versions.InstallVersionScreen
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -98,6 +101,7 @@ object HomeScreen : Screen {
         val isLarge = windowSize.windowWidthSizeClass == WindowWidthSizeClass.EXPANDED
         val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
         val scope = rememberCoroutineScope()
+        val navigator = LocalNavigator.currentOrThrow
         model.fetchLocalVersions(context) // 初始化版本列表
 
         @Composable fun HomeDrawerContext(){
@@ -182,7 +186,8 @@ object HomeScreen : Screen {
                             modifier = Modifier
                                 .weight(3f)
                                 .fillMaxSize()
-                                .padding(16.dp)
+                                .padding(16.dp),
+                            goInstall = { navigator.push(InstallVersionScreen) }
                         )
                     }
                 }
@@ -216,7 +221,7 @@ private class HomeModel : ScreenModel {
             versionList.add(VersionEntry(
                 path = singleFile,
                 manifestPath = "${singleFile}/manifest.launcher.json",
-                gameArch = HomeCppBridge.fetchSOAbi("${singleFile}/libminecraftpe.so")
+                gameArch = HomeCppBridge.fetchSOAbi("${singleFile}/lib/libminecraftpe.so")
             ))
         }
     }
@@ -241,7 +246,7 @@ private fun WaitingFor(context: Context, where2go: (Boolean) -> Unit) {
 
 // 没有版本时的缺省页
 @Composable
-private fun EmptyListPane(modifier: Modifier){
+private fun EmptyListPane(modifier: Modifier, goInstall: () -> Unit){
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -258,7 +263,7 @@ private fun EmptyListPane(modifier: Modifier){
             text = stringResource(id = R.string.home_empty_title),
             style = MaterialTheme.typography.headlineSmall
         )
-        Button(onClick = { /*TODO*/ }) {
+        Button(onClick = goInstall) {
             Row {
                 Icon(
                     imageVector = Icons.Default.InstallMobile,
