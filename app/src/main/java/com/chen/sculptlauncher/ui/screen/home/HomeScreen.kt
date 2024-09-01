@@ -1,6 +1,7 @@
 package com.chen.sculptlauncher.ui.screen.home
 
 import android.content.Context
+import android.content.Intent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -57,6 +58,7 @@ import com.chen.sculptlauncher.core.data.VersionEntry
 import com.chen.sculptlauncher.core.datastore.IS_FIRST_OPEN
 import com.chen.sculptlauncher.core.datastore.getStoredValue
 import com.chen.sculptlauncher.core.datastore.setStoreValue
+import com.chen.sculptlauncher.ui.GameActivity
 import com.chen.sculptlauncher.ui.screen.versions.InstallVersionScreen
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
@@ -187,7 +189,9 @@ object HomeScreen : Screen {
                                 .weight(3f)
                                 .fillMaxSize()
                                 .padding(16.dp),
-                            goInstall = { navigator.push(InstallVersionScreen) }
+                            goInstall = {
+                                context.startActivity(Intent(context, GameActivity::class.java))
+                            }
                         )
                     }
                 }
